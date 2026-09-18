@@ -1,115 +1,449 @@
-                                 Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1x Game Store | Premium & Fast Game Top-Ups</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+        /* Black Background */
+        body {
+            background-color: #050505; 
+            color: #ffffff;
+            line-height: 1.6;
+        }
 
-   1. Definitions.
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: #111111;
+            border-bottom: 2px solid #FFCC00; 
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+        .logo span {
+            color: #FFCC00; 
+        }
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+        .nav-links a, .nav-links span {
+            color: #cccccc;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+        .nav-links a:hover, .nav-links span:hover {
+            color: #FFCC00;
+        }
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 5%;
+            background: linear-gradient(180deg, #111111 0%, #050505 100%); 
+        }
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 900;
+            color: #ffffff;
+        }
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+        .hero p {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+        /* Game Store Section */
+        .store-section {
+            padding: 40px 5%;
+            text-align: center;
+        }
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+        .store-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #FFCC00;
+        }
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+        .game-grid {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+        .game-card {
+            background-color: #0f0f0f; 
+            border: 1px solid #333333;
+            border-radius: 12px;
+            width: 450px; 
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(255, 204, 0, 0.05);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+        .game-card:hover {
+            border-color: #FFCC00;
+            transform: translateY(-5px);
+        }
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+        .game-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            color: #ffffff;
+            border-bottom: 2px solid #FFCC00;
+            padding-bottom: 10px;
+        }
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+        .price-list {
+            list-style: none;
+            margin-top: 15px;
+            text-align: left;
+        }
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #222222;
+        }
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+        .price-item:last-child {
+            border-bottom: none;
+        }
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
+        .amount {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #eeeeee;
+        }
+
+        .price {
+            color: #FFCC00;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .btn-buy-small {
+            background-color: #FFCC00;
+            color: #000000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-buy-small:hover {
+            background-color: #e6b800;
+            transform: scale(1.05);
+        }
+
+        /* Checkout Section (Hidden by default) */
+        #checkout-page {
+            display: none;
+        }
+
+        .payment-section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .payment-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #FFCC00;
+        }
+
+        .instruction-steps {
+            max-width: 650px;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #0f0f0f;
+            padding: 35px;
+            border-radius: 12px;
+            border: 1px solid #333333;
+        }
+
+        .step {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #cccccc;
+        }
+
+        .step span {
+            color: #FFCC00;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .account-number {
+            display: inline-block;
+            background-color: #FFCC00;
+            color: #000000;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin: 10px 0 25px 0;
+            font-size: 1.5rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        .upload-form {
+            background-color: #111111;
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid #333333;
+            margin-top: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #aaaaaa;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .form-input, .form-file {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #444444;
+            background-color: #050505;
+            color: #FFCC00;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .form-input:focus, .form-file:focus {
+            outline: none;
+            border-color: #FFCC00;
+        }
+
+        .btn-submit {
+            background-color: #FFCC00;
+            color: #000000;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 1.2rem;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+        }
+
+        .support-contact {
+            margin-top: 30px;
+            text-align: center;
+            border-top: 1px solid #333333;
+            padding-top: 20px;
+        }
+
+        .btn-telegram { 
+            display: inline-block;
+            background-color: #0088cc; 
+            padding: 10px 22px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #111111;
+            color: #777777;
+            border-top: 1px solid #333333;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav for Store Page -->
+    <nav id="store-nav">
+        <a class="logo" onclick="goBack()">1x<span>GameStore</span></a>
+        <div class="nav-links">
+            <span onclick="goBack()">Home</span>
+        </div>
+    </nav>
+
+    <!-- Nav for Checkout Page (Hidden Initially) -->
+    <nav id="checkout-nav" style="display: none;">
+        <a class="logo" onclick="goBack()">1x<span>GameStore</span></a>
+        <div class="nav-links">
+            <span onclick="goBack()">← Back to Store</span>
+        </div>
+    </nav>
+
+
+    <!-- ==================== MAIN STORE PAGE ==================== -->
+    <div id="store-page">
+        <section class="hero">
+            <h1>Level Up Instantly.</h1>
+            <p>Premium eFootball Coins Top-Ups. Fast, secure, and verified payments in Birr.</p>
+        </section>
+
+        <section class="store-section">
+            <h2>Select Your Package</h2>
+            <div class="game-grid">
+                
+                <div class="game-card">
+                    <h3 class="game-title">eFootball™ Coins</h3>
+                    <ul class="price-list">
+                        <li class="price-item">
+                            <span class="amount">100 Coins</span>
+                            <span class="price">240 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('100 Coins - 240 ETB')">Buy</button>
+                        </li>
+                        <li class="price-item">
+                            <span class="amount">1,040 Coins</span>
+                            <span class="price">1,905 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('1,040 Coins - 1,905 ETB')">Buy</button>
+                        </li>
+                        <li class="price-item">
+                            <span class="amount">2,130 Coins</span>
+                            <span class="price">3,755 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('2,130 Coins - 3,755 ETB')">Buy</button>
+                        </li>
+                        <li class="price-item">
+                            <span class="amount">3,300 Coins</span>
+                            <span class="price">5,605 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('3,300 Coins - 5,605 ETB')">Buy</button>
+                        </li>
+                        <li class="price-item">
+                            <span class="amount">5,800 Coins</span>
+                            <span class="price">9,305 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('5,800 Coins - 9,305 ETB')">Buy</button>
+                        </li>
+                        <li class="price-item">
+                            <span class="amount">12,000 Coins</span>
+                            <span class="price">18,555 ETB</span>
+                            <button class="btn-buy-small" onclick="openCheckout('12,000 Coins - 18,555 ETB')">Buy</button>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+
+    <!-- ==================== CHECKOUT PAGE ==================== -->
+    <div id="checkout-page">
+        <section class="payment-section">
+            <h3>Complete Your Purchase</h3>
+            
+            <div class="instruction-steps">
+                <p class="step"><span>1.</span> Send payment in Birr to our official Telebirr account:</p>
+                <div class="account-number">📱 Telebirr: 0960022306</div>
+                
+                <p class="step"><span>2.</span> Fill out your details and upload the payment screenshot below:</p>
+                
+                <form class="upload-form" action="https://formsubmit.co/dawajr733@gmail.com" method="POST" enctype="multipart/form-data">
+                    
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://bitly.com/"> <!-- Can change this to any success page later -->
+
+                    <label class="form-label">Selected Package:</label>
+                    <input type="text" id="packageField" name="Selected_Package" class="form-input" readonly>
+
+                    <label class="form-label">Game Name & Player ID:</label>
+                    <input type="text" name="Player_ID" class="form-input" placeholder="Example: eFootball - ID 123456789" required>
+                    
+                    <label class="form-label">Upload Payment Screenshot:</label>
+                    <input type="file" name="Screenshot" class="form-file" accept="image/*" required>
+                    
+                    <button type="submit" class="btn-submit">Submit Order</button>
+                </form>
+
+                <div class="support-contact">
+                    <p style="color: #aaaaaa;">Have a question or issue? Contact Support:</p>
+                    <a href="https://t.me/dawa_jr" class="btn-telegram">✈️ Telegram: @dawa_jr</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 1x Game Store. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to handle page switching without getting 404 Error -->
+    <script>
+        function openCheckout(packageName) {
+            // Hide the store page
+            document.getElementById('store-page').style.display = 'none';
+            document.getElementById('store-nav').style.display = 'none';
+            
+            // Show the checkout page
+            document.getElementById('checkout-page').style.display = 'block';
+            document.getElementById('checkout-nav').style.display = 'flex';
+            
+            // Set the package name in the form
+            document.getElementById('packageField').value = packageName;
+            
+            // Scroll to the top
+            window.scrollTo(0, 0);
+        }
+
+        function goBack() {
+            // Hide the checkout page
+            document.getElementById('checkout-page').style.display = 'none';
+            document.getElementById('checkout-nav').style.display = 'none';
+            
+            // Show the store page
+            document.getElementById('store-page').style.display = 'block';
+            document.getElementById('store-nav').style.display = 'flex';
+            
+            // Scroll to the top
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>          as part of the Derivative Works; within the Source form or
           documentation, if provided along with the Derivative Works; or,
           within a display generated by the Derivative Works, if and
           wherever such third-party notices normally appear. The contents
